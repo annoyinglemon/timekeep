@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" href="../../resources/css/stylesheet.css" th:href="@{/resources/css/stylesheet.css}"/>
+		<title th:text="#{user.title.page}">Titulo</title>
+</head>
+
+
+<body>
+<div>
+	
+		<table class="box-table-a"> 
+				<caption th:text="#{user.table.caption}">List of Users</caption>
+				<thead>
+					<tr>
+						<th scope="col">Id</th>
+						<th scope="col">First Name</th>
+						<th scope="col">Last Name</th>
+						<th scope="col">Middle Name</th>
+						<th scope="col">Email</th>
+						<th scope="col">UserName</th>
+						<th scope="col">Password</th>
+						<th scope="col">Position Id</th>
+						<th scope="col">Supervisor Id</th>
+						<th scope="col">Date Hired</th>
+						<th scope="col">Role</th>
+						<th scope="col">SSS Id</th>
+						<th scope="col">Pag-Ibig Id</th>
+						<th scope="col">Healthcard Id</th>
+						<th scope="col">TIN Id</th>
+						<th scope="col">Accessible</th>
+						<th scope="col">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="usr : ${users}">
+						<td th:text="${usr.userId}">1</td>
+						<td th:text="${usr.firstName}">a</td>
+						<td th:text="${usr.lastName}">b</td>
+						<td th:text="${usr.middleName}">c</td>
+						<td th:text="${usr.email}">d</td>
+						<td th:text="${usr.username}">e</td>
+						<td th:text="${usr.password}">f</td>
+						<td th:text="${usr.positionId}">1</td>
+						<td th:text="${usr.supervisorId}">2</td>
+						<td th:text="${usr.dateHired}">3</td>
+						<td th:text="${usr.role}">user</td>
+						<td th:text="${usr.sssId}">4</td>
+						<td th:text="${usr.pagibigId}">5</td>
+						<td th:text="${usr.healthcardId}">6</td>
+						<td th:text="${usr.tinId}">7</td>
+						<td th:text="${usr.isUserAccessDenied}">1</td>
+						<td><a href="#" th:href="@{/users/delete(userId=${usr.userId})}"><input type="button" value="Delete"/></a>
+							<a href="#" th:href="@{/users/edit(userId=${usr.userId})}"><input type="button" value="Edit"/></a></td> 
+					</tr>
+					<tr th:remove="all">
+						<td>1</td>
+						<td>a</td>
+						<td>b</td>
+						<td>c</td>
+						<td>d</td>
+						<td>e</td>
+						<td>f</td>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>user</td>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+						<td>7</td>
+						<td><a href="#">del</a> | <a href="#">edit</a></td> 
+					</tr>
+					<tr th:remove="all">
+						<td>1</td>
+						<td>a</td>
+						<td>b</td>
+						<td>c</td>
+						<td>d</td>
+						<td>e</td>
+						<td>f</td>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>user</td>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+						<td>7</td>
+						<td><a href="#">del</a> | <a href="#">edit</a></td> 
+					</tr>
+					<tr th:remove="all">
+						<td>1</td>
+						<td>a</td>
+						<td>b</td>
+						<td>c</td>
+						<td>d</td>
+						<td>e</td>
+						<td>f</td>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>user</td>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+						<td>7</td>
+						<td><a href="#">del</a> | <a href="#">edit</a></td> 
+					</tr>
+					<tr th:remove="all">
+						<td>1</td>
+						<td>a</td>
+						<td>b</td>
+						<td>c</td>
+						<td>d</td>
+						<td>e</td>
+						<td>f</td>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>user</td>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+						<td>7</td>
+						<td><a href="#">del</a> | <a href="#">edit</a></td> 
+					</tr>
+				</tbody>
+		</table>
+		
+		<form action="#" th:action="@{/users/create}" th:object="${usercommand}" method="post">
+		<table class="box-table-a">
+			<caption th:text="#{${usertype + '.user.caption.table'}}">New User</caption>
+			<thead>
+					<!-- field are dependent from the fields of UserDto.java -->
+				<tr>
+						<th>Id</th> <td><input type="text" th:field="*{userId}"/></td> 
+				</tr>
+				<tr>	
+						<th>First Name</th> <td><input type="text" th:field="*{firstName}"/></td> 
+				</tr>
+				<tr>
+						<th>Last Name</th> <td><input type="text" th:field="*{lastName}"/></td>
+				</tr>
+				<tr>
+						<th>Middle Name</th> <td><input type="text" th:field="*{middleName}"/></td>
+				</tr>
+				<tr>
+						<th>Email</th>	<td><input type="text" th:field="*{email}"/></td>
+				</tr>
+				<tr>
+						<th>UserName</th> <td><input type="text" th:field="*{username}"/></td>
+				</tr>
+				<tr> 
+						<th>Password</th> <td><input type="text" th:field="*{password}"/></td>
+				</tr>
+				<tr>
+						<th>Position Id</th> <td><input type="text" th:field="*{positionId}"/></td>
+				</tr>
+				<tr>
+						<th>Supervisor Id</th> <td><input type="text" th:field="*{supervisorId}"/></td>
+				</tr>
+				<tr>
+						<th>Date Hired</th> <td><input type="date" th:field="*{dateHired}"/></td>	
+				</tr>
+				<tr>
+						<th>Role</th> <td><input type="text" th:field="*{role}"/></td>
+				</tr>
+				<tr>
+						<th>SSS Id</th> <td><input type="text" th:field="*{sssId}"/></td>
+				</tr>
+				<tr>
+						<th>Pag-Ibig Id</th> <td><input type="text" th:field="*{pagibigId}"/></td>
+				</tr>
+				<tr>
+						<th>Healthcard Id</th> <td><input type="text" th:field="*{healthcardId}"/></td>
+				</tr>
+				<tr>
+						<th>TIN Id</th>	  <td><input type="text" th:field="*{tinId}"/></td>
+				</tr>			
+				<tr>
+						<th>Test</th>	<td><input type="checkbox" th:field="*{isUserAccessDenied}"/> </td> 
+				</tr>
+				<tr>
+					<td>
+						<button type="submit" th:text="#{${usertype + '.user.label.button'}}">Action</button>
+					</td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</thead>
+		</table>
+		
+	</form>
+</div>
+
+</body>
+</html>
